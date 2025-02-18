@@ -161,4 +161,4 @@ elif st.session_state.page == "challenge":
         st.session_state.page = "home"
         st.rerun()
 
-st.markdown("<div class='footer'>📧 Contact: support@growthmindset.com | 🌍 www.growthmindset.com</div>", unsafe_allow_html=True)
+st.markdown("<div class='footer'>📧 Contact: sairanasir853@gmail.com | 🌍 03492608035</div>", unsafe_allow_html=True)
