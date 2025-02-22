@@ -6,16 +6,13 @@ import pandas as pd
 import plotly.express as px
 from database import create_table, save_challenge, get_user_challenges, delete_challenge  
 
-# ✅ Ensure the table is created before any operation
 create_table()
 
-# Initialize session state
 if "page" not in st.session_state:
     st.session_state.page = "home"
 if "prev_page" not in st.session_state:
-    st.session_state.prev_page = None  # For tracking previous page
+    st.session_state.prev_page = None  
 
-# Sidebar
 with st.sidebar:
     st.markdown("<h2 style='text-align: center;'>🚀 Growth Mindset Challenges</h2>", unsafe_allow_html=True)
     
@@ -28,7 +25,6 @@ with st.sidebar:
         st.session_state.page = st.session_state.prev_page if st.session_state.prev_page else "home"
         st.rerun()
 
-# Quotes and Challenges
 quotes = [
     emoji.emojize("💡 Mistakes are proof that you are trying."),
     emoji.emojize("💪 Challenges help you grow stronger."),
@@ -41,7 +37,6 @@ challenges = [
     "Practice gratitude: List three things you're grateful for today.",
 ]
 
-# Home Page
 if st.session_state.page == "home":
     st.title("Growth Mindset Challenge")
     name = st.text_input("Enter your name:")
@@ -58,10 +53,8 @@ if st.session_state.page == "home":
         else:
             st.warning("Please enter both your name and email.")
 
-
-# Welcome Page with Animation and Styling
 elif st.session_state.page == "welcome":
-    # Custom CSS for animations and styling
+    
     st.markdown(
         """
         <style>
@@ -122,15 +115,11 @@ elif st.session_state.page == "welcome":
         unsafe_allow_html=True
     )
 
-    # Animated Welcome Text
     st.markdown(f"<div class='welcome-container'>🚀 Welcome, {st.session_state.name}!</div>", unsafe_allow_html=True)
-    
-    # Date Display (Same as Before)
+ 
     today = datetime.date.today()
     st.write(f"📅 Today's Date: {today.strftime('%A, %d %B %Y')}")
 
-    
-    # Motivational Animated Paragraph
     st.markdown(
         """
         <div class="motivation-text">
@@ -144,7 +133,6 @@ elif st.session_state.page == "welcome":
         unsafe_allow_html=True
     )
 
-# Buttons in a Row
     col1, col2, col3 = st.columns([1, 1, 1])
 
     with col1:
@@ -167,17 +155,6 @@ elif st.session_state.page == "welcome":
             st.rerun()
 
 
-
-
-
-
-
-
-
-
-
-
-# Challenge Page
 elif st.session_state.page == "challenge":
     st.header("💡 Growth Challenge")
     st.markdown(f"<p class='quote-box'>{st.session_state.quote}</p>", unsafe_allow_html=True)
@@ -193,14 +170,11 @@ elif st.session_state.page == "challenge":
         if st.button("💾 Save Reflection", key="save_reflection"):
             if reflection:
                 today_date = datetime.date.today().strftime("%Y-%m-%d")
-                
-                # ✅ Reflection save karna
+
                 save_challenge(st.session_state.email, today_date, st.session_state.daily_challenge, reflection)
-                
-                # ✅ Graph update trigger
+       
                 st.session_state.graph_update = True
 
-                # ✅ UPDATED: Fetch latest challenges to update Pie Chart
                 st.session_state.user_challenges = get_user_challenges(st.session_state.email) or []
                 
                 st.success("Reflection saved successfully! 🚀")
@@ -216,10 +190,8 @@ elif st.session_state.page == "challenge":
         st.session_state.page = "welcome"
         st.rerun()
 
-    # ✅ New Feature: Progress Pie Chart
     st.subheader("📊 Your Challenge Completion (Last 31 Days)")
 
-    # ✅ Handle errors gracefully
     if "user_challenges" not in st.session_state:
         st.session_state.user_challenges = get_user_challenges(st.session_state.email) or []
 
@@ -227,23 +199,18 @@ elif st.session_state.page == "challenge":
 
     today = datetime.date.today()
     start_date = today - datetime.timedelta(days=30)
-    total_days = 31  # Last 31 days
+    total_days = 31 
 
-    # ✅ Count reflections
-    completed_days = len(set([entry[0] for entry in user_challenges]))  # Unique dates in data
-    missed_days = total_days - completed_days  # Days without reflection
-
-    # ✅ Ensure percentage calculations are accurate
+    completed_days = len(set([entry[0] for entry in user_challenges])) 
+    missed_days = total_days - completed_days
     completed_percent = (completed_days / total_days) * 100
     missed_percent = (missed_days / total_days) * 100
 
-    # ✅ Create Pie Chart Data
     pie_data = pd.DataFrame({
         "Status": ["Completed Challenges", "Missed Challenges"],
         "Percentage": [completed_percent, missed_percent]
     })
 
-    # ✅ Generate Pie Chart
     fig = px.pie(
         pie_data, 
         names="Status", 
@@ -256,9 +223,6 @@ elif st.session_state.page == "challenge":
 
     st.plotly_chart(fig)
 
-
-
-# Previous Challenges Page
 elif st.session_state.page == "previous_challenges":
     
     st.title("📜 Your Previous Challenges")
