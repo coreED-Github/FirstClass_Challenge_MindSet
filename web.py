@@ -8,6 +8,19 @@ import matplotlib.pyplot as plt
 from database import create_table, save_challenge, get_user_challenges, delete_reflection  
 from  PIL import Image
 
+st.markdown(
+    """
+    <style>
+        body {
+            background-color: #f3f4f4  !important;
+        }
+        .stApp {
+            background-color: #f3f4f4  !important;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 create_table()
 
 if "page" not in st.session_state:
