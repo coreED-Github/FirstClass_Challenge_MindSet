@@ -114,6 +114,7 @@ challenges = [
 # Home Page
 if st.session_state.page == "home":
     st.title("🌱Growth Mindset Challenge")
+
     name = st.text_input("Enter your name:")
     st.warning("🔒 If you want to keep your challenge days continuous, use the same password every time ")
     email = st.text_input("Enter your Password:")
@@ -148,7 +149,7 @@ elif st.session_state.page == "welcome":
 
  @keyframes blink {
             0% { color: red; }
-            50% { color: black; }
+            50% { color: yellow; }
             100% { color: red; }
   }
         
@@ -156,7 +157,6 @@ elif st.session_state.page == "welcome":
             font-size: 24px;
             font-weight: bold;
             animation: blink 1s infinite;
-            background-color: #d5faf8 ;
             padding-bottom:20px;
             border-radius: 10px;
         }
@@ -164,7 +164,7 @@ elif st.session_state.page == "welcome":
             .welcome-container {
                 text-align: left;
                 animation: fadeIn 1.5s ease-in-out;
-                color: #20f2e7;
+                color: #50cac6 ;
                 font-size: 50px;
                 
                 padding-bottom:20px;
@@ -241,7 +241,7 @@ st.markdown("""
             font-weight: bold;
             color: black;
             text-align: center;
-            background: linear-gradient(90deg, #ff9966, #ff5e62);
+            background: linear-gradient(90deg, yellow, #ff5e62);
             padding: 10px;
             border-radius: 8px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -270,11 +270,11 @@ st.markdown("""
 
 if st.session_state.page == "challenge":
     st.subheader("Your Mindset Path to Growth! 📚")
-    st.markdown("<span style='color: #20f2e7 ;'>This is a new lesson for you today. By following this lesson, you will complete your challenge.</span>", unsafe_allow_html=True)
+    st.markdown("<span style='color: #50cac6  ;'>This is a new lesson for you today. By following this lesson, you will complete your challenge.</span>", unsafe_allow_html=True)
     st.markdown(f"<p class='quote-box'>{st.session_state.quote}</p>", unsafe_allow_html=True)
     
     st.subheader("Today's Challenge! 🎯 ")
-    st.markdown("<span style='color: #20f2e7 ;'>Finally, here is your new challenge for today. Hope you complete it with honesty.</span>", unsafe_allow_html=True)
+    st.markdown("<span style='color: #50cac6 ;'>Finally, here is your new challenge for today. Hope you complete it with honesty.</span>", unsafe_allow_html=True)
     st.markdown(f"<p class='challenge-text'>{st.session_state.daily_challenge}</p>", unsafe_allow_html=True)
     if st.button("⚔ Accept Challenge ⚔", key="challenge_back"):
         st.session_state.page = "Reflection"
@@ -289,7 +289,7 @@ if st.session_state.page == "challenge":
 if st.session_state.page == "Reflection":
     
     st.subheader("Mission Accomplished! Share Your Learnings ✍")
-    st.markdown("<span style='color: #20f2e7;'>After completing your task, fill out this reflection.</span>", unsafe_allow_html=True)
+    st.markdown("<span style='color: #50cac6 ;'>After completing your task, fill out this reflection.</span>", unsafe_allow_html=True)
     st.text("Using the lesson given above, how did you complete your task? Were you successful? What challenges did you face? Where is improvement needed? Define these aspects as well.")
     reflection = st.text_area("📝 Reflect on today's challenge and what you learned:")
 
@@ -324,9 +324,9 @@ if st.session_state.page == "Reflection":
 if st.session_state.page == "Progress":
        
        st.subheader("📊 Your Challenges Progress")
-       st.markdown("<span style='color: #b31b09;'>This is your progress tracking graph. Every time you accept a challenge and click the Save Reflection button, you will see your progress increasing in the graph. If you achieve 100%, you will successfully bring a positive change to your personality with a strong and growth-oriented mindset.</span>", unsafe_allow_html=True)
+       st.markdown("<span style='color: #50cac6 ;'>This is your progress tracking graph. Every time you accept a challenge and click the Save Reflection button, you will see your progress increasing in the graph. If you achieve 100%, you will successfully bring a positive change to your personality with a strong and growth-oriented mindset.</span>", unsafe_allow_html=True)
        fig, ax = plt.subplots()
-       ax.bar(["Progress"], [st.session_state.progress], color="black")
+       ax.bar(["Progress"], [st.session_state.progress], color= "yellow")
        ax.set_ylim(0 ,100 )
        st.pyplot(fig)
        
