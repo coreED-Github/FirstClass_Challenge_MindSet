@@ -4,7 +4,6 @@ import emoji
 import datetime
 import pandas as pd
 import plotly.express as px
-from PIL import ImageTk
 import matplotlib.pyplot as plt
 from database import create_table, save_challenge, get_user_challenges, delete_reflection  
 from  PIL import Image
