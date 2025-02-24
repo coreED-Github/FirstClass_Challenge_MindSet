@@ -374,6 +374,7 @@ if st.session_state.page == "congratulations":
     if st.button("⬅ Back", key="back_to_challenges"):
         st.session_state.page = "Reflection"
         st.rerun()
+
 # privous challenge
 elif st.session_state.page == "previous_challenges":
     
@@ -405,14 +406,7 @@ elif st.session_state.page == "previous_challenges":
     else:
         st.info("You haven't completed any challenges yet. Start now!")
 
-    col1, col2 = st.columns(2)
-
-    with col1:
+    
         if st.button("🏠 Go to Home", key="previous_home"):
             st.session_state.page = "home"
             st.rerun()
-
-    with col2:
-        if st.button("⬅ Back", key="challenge_backs"):
-         st.session_state.page = "welcome"
-        st.rerun()
