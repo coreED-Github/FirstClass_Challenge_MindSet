@@ -7,20 +7,6 @@ import plotly.express as px
 import matplotlib.pyplot as plt
 from database import create_table, save_challenge, get_user_challenges, delete_reflection  
 from  PIL import Image
-
-st.markdown(
-    """
-    <style>
-        body {
-            background-color: #f3f4f4  !important;
-        }
-        .stApp {
-            background-color: #f3f4f4  !important;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 create_table()
 
 if "page" not in st.session_state:
@@ -170,7 +156,7 @@ elif st.session_state.page == "welcome":
             font-size: 24px;
             font-weight: bold;
             animation: blink 1s infinite;
-            background-color: white;
+            background-color: #d5faf8 ;
             padding-bottom:20px;
             border-radius: 10px;
         }
@@ -178,7 +164,7 @@ elif st.session_state.page == "welcome":
             .welcome-container {
                 text-align: left;
                 animation: fadeIn 1.5s ease-in-out;
-                color: #ba3c2c;
+                color: #20f2e7;
                 font-size: 50px;
                 
                 padding-bottom:20px;
@@ -197,7 +183,7 @@ elif st.session_state.page == "welcome":
                 font-size: 18px;
                 margin-top: 10px
                 margin-bottom: 10px
-                color: #ba3c2c;
+                color: #20f2e7 ;
                 font-weight: bold;
                 padding-bottom:20px;
                 text-align: left;
@@ -284,11 +270,11 @@ st.markdown("""
 
 if st.session_state.page == "challenge":
     st.subheader("Your Mindset Path to Growth! 📚")
-    st.markdown("<span style='color: #b31b09;'>This is a new lesson for you today. By following this lesson, you will complete your challenge.</span>", unsafe_allow_html=True)
+    st.markdown("<span style='color: #20f2e7 ;'>This is a new lesson for you today. By following this lesson, you will complete your challenge.</span>", unsafe_allow_html=True)
     st.markdown(f"<p class='quote-box'>{st.session_state.quote}</p>", unsafe_allow_html=True)
     
     st.subheader("Today's Challenge! 🎯 ")
-    st.markdown("<span style='color: #b31b09;'>Finally, here is your new challenge for today. Hope you complete it with honesty.</span>", unsafe_allow_html=True)
+    st.markdown("<span style='color: #20f2e7 ;'>Finally, here is your new challenge for today. Hope you complete it with honesty.</span>", unsafe_allow_html=True)
     st.markdown(f"<p class='challenge-text'>{st.session_state.daily_challenge}</p>", unsafe_allow_html=True)
     if st.button("⚔ Accept Challenge ⚔", key="challenge_back"):
         st.session_state.page = "Reflection"
@@ -303,7 +289,7 @@ if st.session_state.page == "challenge":
 if st.session_state.page == "Reflection":
     
     st.subheader("Mission Accomplished! Share Your Learnings ✍")
-    st.markdown("<span style='color: #b31b09;'>After completing your task, fill out this reflection.</span>", unsafe_allow_html=True)
+    st.markdown("<span style='color: #20f2e7;'>After completing your task, fill out this reflection.</span>", unsafe_allow_html=True)
     st.text("Using the lesson given above, how did you complete your task? Were you successful? What challenges did you face? Where is improvement needed? Define these aspects as well.")
     reflection = st.text_area("📝 Reflect on today's challenge and what you learned:")
 
