@@ -324,9 +324,9 @@ if st.session_state.page == "Reflection":
 if st.session_state.page == "Progress":
        
        st.subheader("📊 Your Challenges Progress")
-       st.markdown("<span style='color: #50cac6 ;'>This is your progress tracking graph. Every time you accept a challenge and click the Save Reflection button, you will see your progress increasing in the graph. If you achieve 100%, you will successfully bring a positive change to your personality with a strong and growth-oriented mindset.</span>", unsafe_allow_html=True)
+       st.markdown("<span style='color: #50cac6;'>This is your progress tracking graph. Every time you accept a challenge and click the Save Reflection button, you will see your progress increasing in the graph. If you achieve 100%, you will successfully bring a positive change to your personality with a strong and growth-oriented mindset.</span>", unsafe_allow_html=True)
        fig, ax = plt.subplots()
-       ax.bar(["Progress"], [st.session_state.progress], color= "yellow")
+       ax.bar(["Progress"], [st.session_state.progress], color= "#50cac6")
        ax.set_ylim(0 ,100 )
        st.pyplot(fig)
        
